@@ -8,7 +8,7 @@ Plugin [Paseo](https://paseo.sh) hiển thị sơ đồ PlantUML (Sequence, Clas
 
 ## Cài đặt
 
-Yêu cầu Paseo `>= 0.10.3`.
+Yêu cầu Paseo `>= 0.10.0`.
 
 ```bash
 paseo plugin install github:luongndcoder/paseo-plugin-plantuml --ref main
