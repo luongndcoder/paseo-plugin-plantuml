@@ -1,15 +1,9 @@
 import { useState, useMemo } from "react";
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  ScrollView,
-  Platform,
-} from "react-native";
+import { View, Text, Pressable, ScrollView, Platform } from "react-native";
 import type { PluginTheme } from "@getpaseo/plugin";
 import { Icon, Modal, copyText, useToast } from "@getpaseo/plugin/client/react-native";
 import { buildPlantUmlUrl } from "../shared/plantuml";
+import { ZoomableDiagramImage } from "./zoomable-diagram-image";
 
 interface DiagramCardProps {
   id: string;
@@ -118,11 +112,6 @@ export function DiagramCard({
         minHeight: 180,
         backgroundColor: theme.colors.surface0,
       },
-      previewImage: {
-        width: "100%" as const,
-        height: 280,
-        resizeMode: "contain" as const,
-      },
       codeScrollView: {
         width: "100%" as const,
         maxHeight: 280,
@@ -145,11 +134,6 @@ export function DiagramCard({
         fontSize: 13,
         color: theme.colors.statusDanger,
         textAlign: "center" as const,
-      },
-      modalImage: {
-        width: "100%" as const,
-        height: 520,
-        resizeMode: "contain" as const,
       },
       modalBar: {
         flexDirection: "row" as const,
@@ -248,9 +232,10 @@ export function DiagramCard({
               </Pressable>
             </View>
           ) : (
-            <Image
-              source={{ uri: diagramUrl }}
-              style={styles.previewImage}
+            <ZoomableDiagramImage
+              uri={diagramUrl}
+              height={compact ? 280 : 360}
+              theme={theme}
               onError={() => setHasError(true)}
             />
           )
@@ -287,7 +272,7 @@ export function DiagramCard({
               <Text style={styles.tabButtonText(true)}>Sao chép Code</Text>
             </Pressable>
           </View>
-          <Image source={{ uri: diagramUrl }} style={styles.modalImage} />
+          <ZoomableDiagramImage uri={diagramUrl} height={560} theme={theme} />
         </Modal.Content>
       </Modal>
     </View>
