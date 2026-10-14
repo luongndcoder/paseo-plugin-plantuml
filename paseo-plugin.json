@@ -1,0 +1,7 @@
+{
+  "id": "paseo-plugin-plantuml",
+  "description": "Hiển thị trực quan sơ đồ PlantUML (Sequence, Class, Activity, ERD, ...) ngay trên timeline chat của Paseo",
+  "requirements": {
+    "paseo": ">=0.10.3"
+  }
+}
